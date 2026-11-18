@@ -41,8 +41,7 @@ public class Vehicle extends Asset{
 
     @Override
     public BigDecimal getValue() {
-        LocalDate currentDate = LocalDate.now();
-        int currentYear = currentDate.getYear();
+        int currentYear = LocalDate.now().getYear();
         int carYear = currentYear - year;
         BigDecimal carValue = originalCost;
         BigDecimal reduction;
@@ -51,24 +50,24 @@ public class Vehicle extends Asset{
         String carMake = car[0];
 
         if (carYear < 0){
-            System.out.println("You mean you have a new car, from this year.");
+            System.out.print("\nYou mean you have a new car, from this year -");
             carYear = 0;
         }
 
         if (carYear <= 3){
-            reduction = carValue.multiply(BigDecimal.valueOf(.03 * carYear));
+            reduction = carValue.multiply(BigDecimal.valueOf(.03).multiply(BigDecimal.valueOf(carYear)));
             carValue = carValue.subtract(reduction);
         } else if (carYear <= 6){
-            reduction = carValue.multiply(BigDecimal.valueOf(.06 * carYear));
+            reduction = carValue.multiply(BigDecimal.valueOf(.06).multiply(BigDecimal.valueOf(carYear)));
             carValue = carValue.subtract(reduction);
         } else if (carYear <= 10){
-            reduction = carValue.multiply(BigDecimal.valueOf(.08 * carYear));
+            reduction = carValue.multiply(BigDecimal.valueOf(.08).multiply(BigDecimal.valueOf(carYear)));
             carValue = carValue.subtract(reduction);
         } else {
             carValue = carValue.subtract(BigDecimal.valueOf(1000.00));
         }
 
-        if (odometer >= 100000 && (!carMake.equalsIgnoreCase("Honda") || !carMake.equalsIgnoreCase("Toyota"))){
+        if (odometer > 100_000 && !carMake.equalsIgnoreCase("Honda") || !carMake.equalsIgnoreCase("Toyota")){
             reduction = carValue.multiply(BigDecimal.valueOf(.25));
             carValue = carValue.subtract(reduction);
         }

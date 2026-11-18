@@ -53,11 +53,11 @@ public class House extends Asset{
         BigDecimal houseValue = originalCost;
 
         switch (condition){
-            case 1 -> {houseValue = houseValue.add(BigDecimal.valueOf(180.00 * squareFoot));}
-            case 2 -> {houseValue = houseValue.add(BigDecimal.valueOf(130.00 * squareFoot));}
-            case 3 -> {houseValue = houseValue.add(BigDecimal.valueOf(90.00 * squareFoot));}
-            case 4 -> {houseValue = houseValue.add(BigDecimal.valueOf(80.00 * squareFoot));}
-            default -> {System.out.println("That is not a condition.");}
+            case 1 -> {houseValue = houseValue.add(BigDecimal.valueOf(180.00).multiply(BigDecimal.valueOf(squareFoot)));}
+            case 2 -> {houseValue = houseValue.add(BigDecimal.valueOf(130.00).multiply(BigDecimal.valueOf(squareFoot)));}
+            case 3 -> {houseValue = houseValue.add(BigDecimal.valueOf(90.00).multiply(BigDecimal.valueOf(squareFoot)));}
+            case 4 -> {houseValue = houseValue.add(BigDecimal.valueOf(80.00).multiply(BigDecimal.valueOf(squareFoot)));}
+            default -> {throw new RuntimeException("That is not a condition. pick a number between 1-4.");}
         }
 
 //        if (condition == 1){

@@ -38,7 +38,7 @@ public class Asset {
     }
 
     public BigDecimal getValue(){
-        return originalCost;
+        return this.originalCost;
     }
 
     @Override
