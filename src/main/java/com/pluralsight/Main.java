@@ -21,6 +21,17 @@ public class Main {
         vehicle = new Vehicle("Sport vehicle", "5/14/26", BigDecimal.valueOf(175000.00), "McLaren P1", 2028, 3787);
         assets.add(vehicle);
 
+        Asset myAsset = new Asset("Gift", "2/12/22", BigDecimal.valueOf(0)) {
+            @Override
+            public BigDecimal getValue() {
+                return getOriginalCost();
+            }
+        };
+        assets.add(myAsset);
+
+        Cash money = new Cash("Money I found under the mattress.", "11/7/2024", BigDecimal.valueOf(38.89));
+        assets.add(money);
+
         for (Asset a : assets){
             String message = a.toString();
 
